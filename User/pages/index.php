@@ -12,7 +12,7 @@
 <header>
 	<nav>
 		<ul>
-			<li><a href="#">Home</a></li>
+			<li><a href="./index.php">Home</a></li>
 			<li>
 				<form>
 					<input type="text" placeholder="Search...">
@@ -27,27 +27,29 @@
 					<li><a href="#">Category 3</a></li>
 				</ul>
 			</li>
-			<li><a href="#">Register</a></li>
+			<li><a href="./signin.php">Sign In</a></li>
+			<li><a href="./signup.php">Register</a></li>
 		</ul>
 	</nav>
 </header>
 
-
-	<div class="container">
-		<div class="left">
-			<h1>Job Portal</h1>
-			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.</p>
-			<a href="#">Register</a>
-		</div>
-		<div class="right">
-			<img src="./images/undraw_hire_te5y.svg" alt="Hiring">
-		</div>
-	</div>
+<div class="search-container">
+	<button class="find-job-btn">Find a Job</button>
+	<input type="text" placeholder="Search for jobs...">
+</div>
 
 
+<div class="container">
+	<div class="category">Category 1</div>
+	<div class="category">Category 2</div>
+	<div class="category">Category 3</div>
+	<div class="category">Category 4</div>
+	<div class="category">Category 5</div>
+</div>
 
 
-<footer >
+
+<footer>
 	<div class="container">
 		<div class="left">
 			<p>Company Name</p>
