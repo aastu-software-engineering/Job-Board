@@ -70,7 +70,7 @@
 
 		$field = $_GET['field'];
 
-		if ($field == 'all') {
+		if ($field == 'All') {
 
 			$sql = "SELECT * FROM jobs";
 		} else {
