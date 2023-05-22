@@ -40,52 +40,52 @@
 
 <form method="GET" action="">
 	<div class="container" class="category">
-		<button type="submit" name="field" value="All">All Jobs</button>
-		<button type="submit" name="field" value="Technology">Technology</button>
-		<button type="submit" name="field" value="Business And Finance">Business And Finance</button>
-		<button type="submit" name="field" value="Arts and Culture">Arts and Culture</button>
-		<button type="submit" name="field" value="Healthcare">Healthcare</button>
-		<button type="submit" name="field" value="Education">Education</button>
+		<button class="button-30" role="button" type="submit" name="field" value="All">All Jobs</button>
+		<button class="button-30" role="button" type="submit" name="field" value="Technology">Technology</button>
+		<button class="button-30" role="button" type="submit" name="field" value="Business And Finance">Business And Finance</button>
+		<button class="button-30" role="button" type="submit" name="field" value="Arts and Culture">Arts and Culture</button>
+		<button class="button-30" role="button" type="submit" name="field" value="Healthcare">Healthcare</button>
+		<button class="button-30" role="button" type="submit" name="field" value="Education">Education</button>
 	</div>
 </form>
 
-< <!-- jobs table -->
-	<?php
-	// Connect to the database
-	$servername = "localhost";
-	$username = "root";
-	$password = "";
-	$dbname = "job_listings";
+<!-- jobs table -->
+<?php
+// Connect to the database
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "job_listings";
 
-	// Create connection
-	$conn = new mysqli($servername, $username, $password, $dbname);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
 
-	// Check connection
-	if ($conn->connect_error) {
-		die("Connection failed: " . $conn->connect_error);
-	}
+// Check connection
+if ($conn->connect_error) {
+	die("Connection failed: " . $conn->connect_error);
+}
 
-	// Filter the jobs by field if a category button was clicked
-	if (isset($_GET['field'])) {
+// Filter the jobs by field if a category button was clicked
+if (isset($_GET['field'])) {
 
-		$field = $_GET['field'];
+	$field = $_GET['field'];
 
-		if ($field == 'All') {
+	if ($field == 'All') {
 
-			$sql = "SELECT * FROM jobs";
-		} else {
-			$sql = "SELECT * FROM jobs WHERE field = '$field'";
-		}
-	} else {
 		$sql = "SELECT * FROM jobs";
+	} else {
+		$sql = "SELECT * FROM jobs WHERE field = '$field'";
 	}
-	// Retrieve the data from the database
-	$result = $conn->query($sql);
+} else {
+	$sql = "SELECT * FROM jobs";
+}
+// Retrieve the data from the database
+$result = $conn->query($sql);
 
-	// Display the data in a table
-	if ($result->num_rows > 0) {
-		echo '<table>';
-		echo '<thead>
+// Display the data in a table
+if ($result->num_rows > 0) {
+	echo '<table>';
+	echo '<thead>
         <tr>
             <th>Job Title</th>
 			<th>Field</th>
@@ -94,39 +94,42 @@
             <th>Requirements</th>         
         </tr>
     </thead>';
-		echo '<tbody>';
-		while ($row = $result->fetch_assoc()) {
-			echo '<tr>';
-			echo '<td>' . htmlspecialchars($row['job_title']) . '</td>';
-			echo '<td>' . htmlspecialchars($row['field']) . '</td>';
-			echo '<td>' . htmlspecialchars($row['company_name']) . '</td>';
-			echo '<td>' . htmlspecialchars($row['job_description']) . '</td>';
-			echo '<td>' . htmlspecialchars($row['requirements']) . '</td>';
-			echo '</tr>';
-		}
-		echo '</tbody>';
-		echo '</table>';
-	} else {
-		echo "No jobs found.";
+	echo '<tbody>';
+	while ($row = $result->fetch_assoc()) {
+		echo '<tr>';
+		echo '<td>' . htmlspecialchars($row['job_title']) . '</td>';
+		echo '<td>' . htmlspecialchars($row['field']) . '</td>';
+		echo '<td>' . htmlspecialchars($row['company_name']) . '</td>';
+		echo '<td>' . htmlspecialchars($row['job_description']) . '</td>';
+		echo '<td>' . htmlspecialchars($row['requirements']) . '</td>';
+		echo '<td><button class="button-30" role="button" type="submit" name="field" value="All">Apply</button></td>';
+		echo '</tr>';
 	}
+	echo '</tbody>';
+	echo '</table>';
+} else {
+	echo '<div class="nojob">
+    <div class="message">No jobs found.</div>
+		</div>';
+}
 
-	// Close the database connection
-	$conn->close();
-	?>
-	<footer>
-		<div class="container">
-			<div class="left">
-				<p>Company Name</p>
-				<p>123 Main St, City, State ZIP</p>
-			</div>
-			<div class="right">
-				<a href="#">Register</a>
-				<a href="#top">Back to Top</a>
-			</div>
+// Close the database connection
+$conn->close();
+?>
+<footer>
+	<div class="container">
+		<div class="left">
+			<p>Company Name</p>
+			<p>123 Main St, City, State ZIP</p>
 		</div>
-	</footer>
+		<div class="right">
+			<a href="#">Register</a>
+			<a href="#top">Back to Top</a>
+		</div>
+	</div>
+</footer>
 
-	<a href="#top" class="back-to-top">Back to Top</a>
-	</body>
+<a href="#top" class="back-to-top">Back to Top</a>
+</body>
 
 </html>
