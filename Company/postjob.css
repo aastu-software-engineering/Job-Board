@@ -1,46 +1,45 @@
-form {
-  max-width: 600px;
-  margin: 0 auto;
+/* Set font and background color */
+body {
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  padding: 20px;
-  border-radius: 5px;
-  color: #333;
+  background-color: #f2f2f2; /* light grey */
 }
 
-/* Style the form rows */
-.form-row {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-/* Style the labels */
+/* Style form label */
 label {
-  flex-basis: 150px;
-  margin-right: 10px;
+  display: block;
+  margin-top: 20px;
   font-weight: bold;
 }
 
-/* Style the input and textarea fields */
-input[type="text"],
-textarea {
-  flex-grow: 1;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 16px;
-  background-color: #fff;
-  color: #333;
+/* Style form input and textarea */
+input[type="text"], textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff; /* white */
 }
 
-/* Style the submit button */
+/* Style radio buttons */
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Style form submit button */
 input[type="submit"] {
-  padding: 10px 20px;
-  background-color: #333;
-  color: #fff;
+  background-color: #000; /* black */
+  color: #fff; /* white */
+  padding: 12px 20px;
   border: none;
-  border-radius: 5px;
-  font-size: 16px;
+  border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+/* Style form submit button on hover */
+input[type="submit"]:hover {
+  background-color: #555; /* dark grey */
 }

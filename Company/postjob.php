@@ -1,3 +1,10 @@
+<?php
+include './database.php';
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,3 +39,20 @@
 </body>
 
 </html>
+
+
+
+<?php
+include './database.php';
+//  $db = new mysqli('host', 'user', 'password', 'job_listings');
+$job_title = $_POST['job_title'];
+$field = $_POST['field'];
+$company_name = $_POST['company_name'];
+$job_description = $_POST['job_description'];
+$requirements = $_POST['requirements'];
+$query = "INSERT INTO jobs (job_title, field, company_name, job_description, requirements) VALUES ('$job_title', '$field', '$company_name', '$job_description', '$requirements')";
+if ($conn->query($query)) {
+    echo "Job added!";
+} else {
+    echo "Error adding job: " . $conn->error;
+} ?>
