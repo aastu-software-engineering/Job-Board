@@ -1,3 +1,7 @@
+<?php
+include './database.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,19 +59,7 @@
 
 <!-- jobs table -->
 <?php
-// Connect to the database
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "job_listings";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-	die("Connection failed: " . $conn->connect_error);
-}
 
 
 // Define the $sql variable with a default value
@@ -138,9 +130,9 @@ $conn->close();
 		</div>
 		<div class="right">
 			<a href="./signin.php">Register</a>
-		
+
 			<a href="#top">^</a>
-			
+
 		</div>
 	</div>
 </footer>
