@@ -10,6 +10,8 @@
 </head>
 
 <header>
+
+	<h1 id="top"></h1>
 	<nav>
 		<ul>
 			<li><a href="./user.php">Home</a></li>
@@ -33,9 +35,11 @@
 	</nav>
 </header>
 
-<div class="search-container">
-	<button class="find-job-btn">Find a Job</button>
-	<input type="text" placeholder="Search for jobs...">
+<div class="search-container" class="find-job-btn">
+	<form method="get" action="user.php" class="search-container">
+		<input type="text" name="query" placeholder="Search...">
+		<button class="find-job-btn" type="submit">Search</button>
+	</form>
 </div>
 
 <form method="GET" action="">
@@ -65,24 +69,34 @@ if ($conn->connect_error) {
 	die("Connection failed: " . $conn->connect_error);
 }
 
-// Filter the jobs by field if a category button was clicked
+
+// Define the $sql variable with a default value
+$sql = "SELECT * FROM jobs";
+
+// Check if the `field` parameter is set in the URL
 if (isset($_GET['field'])) {
-
 	$field = $_GET['field'];
-
 	if ($field == 'All') {
-
+		// Modify the $sql variable to retrieve all jobs
 		$sql = "SELECT * FROM jobs";
 	} else {
+		// Modify the $sql variable to filter jobs by field
 		$sql = "SELECT * FROM jobs WHERE field = '$field'";
 	}
-} else {
-	$sql = "SELECT * FROM jobs";
 }
-// Retrieve the data from the database
+
+// Check if the `query` parameter is set in the URL
+if (isset($_GET['query'])) {
+	$query = $_GET['query'];
+	// Modify the $sql variable to search for matches in the job title and description fields
+	$sql .= " WHERE job_title LIKE '%$query%' OR job_description LIKE '%$query%'";
+}
+
+
+
+
 $result = $conn->query($sql);
 
-// Display the data in a table
 if ($result->num_rows > 0) {
 	echo '<table>';
 	echo '<thead>
@@ -91,7 +105,8 @@ if ($result->num_rows > 0) {
 			<th>Field</th>
             <th>Company Name</th>
             <th>Job Description</th>
-            <th>Requirements</th>         
+            <th>Requirements</th> 
+			<th>Action</th>        
         </tr>
     </thead>';
 	echo '<tbody>';
@@ -112,7 +127,6 @@ if ($result->num_rows > 0) {
     <div class="message">No jobs found.</div>
 		</div>';
 }
-
 // Close the database connection
 $conn->close();
 ?>
@@ -123,13 +137,15 @@ $conn->close();
 			<p>123 Main St, City, State ZIP</p>
 		</div>
 		<div class="right">
-			<a href="#">Register</a>
-			<a href="#top">Back to Top</a>
+			<a href="./signin.php">Register</a>
+		
+			<a href="#top">^</a>
+			
 		</div>
 	</div>
 </footer>
 
-<a href="#top" class="back-to-top">Back to Top</a>
+
 </body>
 
 </html>
