@@ -1,86 +1,50 @@
+/* Style the form container */
 form {
-  max-width: 60%;
-  margin: 10px auto;
-  margin-top:20px;
-  margin-bottom:20px;
-  font-family: Arial, sans-serif;
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 5px;
-  color: #000000;
-  box-shadow: #000000;
-  /* box-shadow: inset 0 0 10px #000000; */
-} 
-
- form label {
-  display: block;
-  margin-bottom: 5px;
-}
-
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #bcb7b7;
-  font-family: sans-serif;
-}
-
-.container {
-  max-width: 50%;
-  max-height: 50%;
+  width: 50%;
   margin: 0 auto;
-  margin-bottom: 30px;
-  margin-top: 20px;
-  padding: 50px 20px;
-  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  background-color: #f2f2f2;
 }
 
-h1 {
-  font-size: 24px;
-  margin-top: 0;
-}
-
-form label {
+/* Style the form labels */
+label {
   display: block;
   margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
 }
 
-form input[type="text"],
-form input[type="number"],
-form input[type="email"],
-form textarea {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
-  margin-bottom: 20px;
+/* Style the form inputs */
+input[type="text"],
+textarea {
   width: 100%;
-}
-
-form input[type="submit"] {
   padding: 10px;
-  background-color: #333;
-  border: none;
-  border-radius: 3px;
-  color: #fff;
-  cursor: pointer;
-}
-
-form input[type="submit"]:hover {
-  background-color: #666;
-}
-
-p.success {
-  color: #0a0;
-  margin-top: 20px;
-}
-div
-{
-  box-shadow: #ccc;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 20px;
-  margin: 20px;
+  background-color: #fff;
+  color: #333;
+}
+
+/* Style the form radio buttons */
+input[type="radio"] {
+  margin-right: 10px;
+}
+
+/* Style the form submit button */
+input[type="submit"] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Style the form submit button on hover */
+input[type="submit"]:hover {
+  background-color: #45a049;
 }
