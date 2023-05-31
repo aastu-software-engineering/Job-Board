@@ -109,7 +109,7 @@ if ($result->num_rows > 0) {
 		echo '<td>' . htmlspecialchars($row['company_name']) . '</td>';
 		echo '<td>' . htmlspecialchars($row['job_description']) . '</td>';
 		echo '<td>' . htmlspecialchars($row['requirements']) . '</td>';
-		echo '<td><button class="button-30" role="button" type="submit" name="field" value="All">Apply</button></td>';
+		echo '<td><form method="post" action="apply.php"><button class="button-30" role="button" type="submit" name="field" value="All">Apply</button></form></td>';
 		echo '</tr>';
 	}
 	echo '</tbody>';

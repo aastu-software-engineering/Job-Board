@@ -24,11 +24,13 @@ include './database.php';
         <label for="company_name">Company Name:</label><br>
         <input type="text" id="company_name" name="company_name" required><br>
         <label for="field">Field:</label><br>
-        <input type="radio" id="field" name="field" value="Technology">Technology</input><br>
-        <input type="radio" id="field" name="field" value="Business And Finance">Business And Finance</input><br>
-        <input type="radio" id="field" name="field" value="Arts and Culture">Arts and Culture</input><br>
-        <input type="radio" id="field" name="field" value="Healthcare">Healthcare</input><br>
-        <input type="radio" id="field" name="field" value="Education">Education</input><br>
+        <div>
+            <input type="radio" id="field" name="field" value="Technology">Technology</input><br>
+            <input type="radio" id="field" name="field" value="Business And Finance">Business And Finance</input><br>
+            <input type="radio" id="field" name="field" value="Arts and Culture">Arts and Culture</input><br>
+            <input type="radio" id="field" name="field" value="Healthcare">Healthcare</input><br>
+            <input type="radio" id="field" name="field" value="Education">Education</input><br><br>
+        </div>
         <label for="job_description">Job Description:</label><br>
         <textarea id="job_description" name="job_description"></textarea><br>
         <label for="requirements">Requirements:</label><br>

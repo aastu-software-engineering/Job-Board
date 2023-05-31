@@ -1,3 +1,6 @@
+<?php
+include './database.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,38 +17,42 @@
     <div class="container">
         <h1>Sign In</h1>
         <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+            <label for="name">email:</label>
+            <input type="text" id="email" name="email" required>
 
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
 
             <input type="submit" value="Sign In">
         </form>
-        <?php
-        // validate form submission
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $name = test_input($_POST["name"]);
-            $password = test_input($_POST["password"]);
 
-            if ($name != "admin" || $password != "password") {
-                echo "<p class='error'>Invalid name or password</p>";
-            } else {
-                echo "<p class='success'>Welcome back, $name!</p>";
-            }
-        }
-
-        // sanitize form data
-        function test_input($data)
-        {
-            $data = trim($data);
-            $data = stripslashes($data);
-            $data = htmlspecialchars($data);
-            return $data;
-        }
-        ?>
     </div>
 
 </body>
 
 </html>
+<?php
+session_start();
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the user's inputs from the sign-in form
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+
+
+    // Validate the user's inputs by checking if the email/username and password match the values stored in the database
+    $query = "SELECT * FROM users WHERE email='$email' AND password='$password'";
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result) == 1) {
+        // If the user's inputs are valid, create a session and redirect to the home page
+        $_SESSION['email'] = $email;
+        header('Location: user.php');
+        exit();
+    } else {
+        // If the user's inputs are invalid, display an error message and allow the user to try again
+       
+        $message ="Invalid email/username or password. Please try again.";
+        echo "<script>alert('$message');</script>";
+    }
+}
+?>

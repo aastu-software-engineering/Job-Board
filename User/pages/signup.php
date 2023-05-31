@@ -1,3 +1,7 @@
+<?php
+include './database.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,53 +21,79 @@
             <h1>Register</h1>
             <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <label for="first-name">First Name:</label>
-                <input type="text" id="first-name" name="first_name" required>
+                <input type="text" id="first-name" name="first_name" required><br>
 
                 <label for="last-name">Last Name:</label>
-                <input type="text" id="last-name" name="last_name" required>
+                <input type="text" id="last-name" name="last_name" required><br>
 
                 <label for="age">Age:</label>
-                <input type="number" id="age" name="age" required>
+                <input type="number" id="age" name="age" required><br>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" required><br>
 
-                <label for="cv">CV:</label>
-                <textarea id="cv" name="cv" rows="10" required></textarea>
 
-                <label for="major">Major:</label>
-                <input type="text" id="major" name="major" required>
+
+                <label for="password">password:</label>
+                <input type="text" id="password" name="password" required><br>
 
                 <input type="submit" value="Sign Up">
                 <p>Already have an account? <a href="./signin.php">Log in</a>.</p>
             </form>
-            <?php
-            // validate form submission
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $first_name = test_input($_POST["first_name"]);
-                $last_name = test_input($_POST["last_name"]);
-                $age = test_input($_POST["age"]);
-                $email = test_input($_POST["email"]);
-                $cv = test_input($_POST["cv"]);
-                $major = test_input($_POST["major"]);
 
-                // do something with the form data, such as insert it into a database
-                // ...
 
-                echo "<p class='success'>Thank you for signing up, $first_name!</p>";
-            }
-
-            // sanitize form data
-            function test_input($data)
-            {
-                $data = trim($data);
-                $data = stripslashes($data);
-                $data = htmlspecialchars($data);
-                return $data;
-            }
-            ?>
         </div>
 
     </body>
 
 </html>
+
+
+<?php
+// validate form submission
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $first_name = test_input($_POST["first_name"]);
+    $last_name = test_input($_POST["last_name"]);
+    $age = test_input($_POST["age"]);
+    $email = test_input($_POST["email"]);
+    $password = test_input($_POST["password"]);
+  
+    $message = "<p class='success'>Thank you for signing up, $first_name!</p>";
+    echo "<script>alert('$message');</script>";
+}
+
+function test_input($data)
+{
+    $data = trim($data); // remove whitespace
+    $data = stripslashes($data); // remove backslashes
+    $data = htmlspecialchars($data); // convert special characters to HTML entities
+    return $data;
+}
+
+
+
+
+// Connect to the database
+
+
+// Check if the form was submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Get the form data
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $age = $_POST['age'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    // Insert the form data into the database
+    $query = "INSERT INTO users (first_name, last_name, age, email, password) VALUES ('$first_name', '$last_name', '$age', '$email', '$password')";
+    if (mysqli_query($conn, $query)) {
+        // If the datais successfully inserted into the database, redirect the user to a success page
+        header("Location: ./signin.php");
+        exit();
+    } else {
+        // If the data cannot be inserted into the database, display an error message
+        echo "Error: " . mysqli_error($conn);
+    }
+}
+?>

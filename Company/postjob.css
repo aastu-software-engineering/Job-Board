@@ -1,45 +1,86 @@
-/* Set font and background color */
-body {
+form {
+  max-width: 60%;
+  margin: 10px auto;
+  margin-top:20px;
+  margin-bottom:20px;
   font-family: Arial, sans-serif;
-  background-color: #f2f2f2; /* light grey */
-}
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 5px;
+  color: #000000;
+  box-shadow: #000000;
+  /* box-shadow: inset 0 0 10px #000000; */
+} 
 
-/* Style form label */
-label {
+ form label {
   display: block;
-  margin-top: 20px;
-  font-weight: bold;
+  margin-bottom: 5px;
 }
 
-/* Style form input and textarea */
-input[type="text"], textarea {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
+
+* {
   box-sizing: border-box;
-  border: 2px solid #ccc;
-  border-radius: 4px;
-  background-color: #fff; /* white */
 }
 
-/* Style radio buttons */
-input[type="radio"] {
-  margin-right: 10px;
+body {
+  background-color: #bcb7b7;
+  font-family: sans-serif;
 }
 
-/* Style form submit button */
-input[type="submit"] {
-  background-color: #000; /* black */
-  color: #fff; /* white */
-  padding: 12px 20px;
+.container {
+  max-width: 50%;
+  max-height: 50%;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  margin-top: 20px;
+  padding: 50px 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+h1 {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="email"],
+form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+form input[type="submit"] {
+  padding: 10px;
+  background-color: #333;
   border: none;
-  border-radius: 4px;
+  border-radius: 3px;
+  color: #fff;
   cursor: pointer;
-  font-size: 16px;
+}
+
+form input[type="submit"]:hover {
+  background-color: #666;
+}
+
+p.success {
+  color: #0a0;
   margin-top: 20px;
 }
-
-/* Style form submit button on hover */
-input[type="submit"]:hover {
-  background-color: #555; /* dark grey */
+div
+{
+  box-shadow: #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 20px;
 }
