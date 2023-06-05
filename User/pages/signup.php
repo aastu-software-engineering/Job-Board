@@ -10,41 +10,42 @@ include './database.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="./signup.css">
-
 </head>
 
 <body>
-
-    <body>
-        <div class="container">
-            <h1>Register</h1>
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <div class="container">
+        <h1 class="text-center">Register</h1>
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <div class="form-group">
                 <label for="first-name">First Name:</label>
-                <input type="text" id="first-name" name="first_name" required><br>
-
+                <input type="text" class="form-control" id="first-name" name="first_name" required>
+            </div>
+            <div class="form-group">
                 <label for="last-name">Last Name:</label>
-                <input type="text" id="last-name" name="last_name" required><br>
-
+                <input type="text" class="form-control" id="last-name" name="last_name" required>
+            </div>
+            <div class="form-group">
                 <label for="age">Age:</label>
-                <input type="number" id="age" name="age" required><br>
-
+                <input type="number" class="form-control" id="age" name="age" required>
+            </div>
+            <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required><br>
-
-
-
-                <label for="password">password:</label>
-                <input type="text" id="password" name="password" required><br>
-
-                <input type="submit" value="Sign Up">
-                <p>Already have an account? <a href="./signin.php">Log in</a>.</p>
-            </form>
-
-
-        </div>
-
-    </body>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <p class="text-center">Already have an account? <a href="./signin.php">Log in</a>.</p>
+        </form>
+    </div>
+</body>
 
 </html>
 
