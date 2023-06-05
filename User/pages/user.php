@@ -1,64 +1,70 @@
 <?php
 include './database.php';
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Job portal</title>
-	<link rel="stylesheet" href="./user.css">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job portal</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </head>
 
-<header>
+<body>
+    <header>
+        
+        <nav class="navbar text-white navbar-expand-lg navbar-dark bg-dark text-white">
+            <a class="navbar-brand" href="./user.php"  class="text-white" >Job Portal</a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li  class="text-white" class="nav-item">
+                        <a class="nav-link" href="./user.php">Home</a>
+                    </li>
+        
+                    <li  class="text-white"   class="nav-item">
+                        <a class="nav-link" href="./signin.php">Sign In</a>
+                    </li>
+                    <li  class="text-white" class="nav-item">
+                        <a class="nav-link" href="./signup.php">Register</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
 
-	<h1 id="top"></h1>
-	<nav>
-		<ul>
-			<li><a href="./user.php">Home</a></li>
-			<li>
-				<form>
-					<input type="text" placeholder="Search...">
-					<button type="submit">Search</button>
-				</form>
-			</li>
-			<li>
-				<a href="#">Categories</a>
-				<ul>
-					<li><a href="#">Category 1</a></li>
-					<li><a href="#">Category 2</a></li>
-					<li><a href="#">Category 3</a></li>
-				</ul>
-			</li>
-			<li><a href="./signin.php">Sign In</a></li>
-			<li><a href="./signup.php">Register</a></li>
-		</ul>
-	</nav>
-</header>
+    <div class="container mt-4">
+        <form method="get" action="user.php" class="search-container">
+            <div class="input-group mb-3">
+                <input type="text" name="query" class="form-control" placeholder="Search...">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-<div class="search-container" class="find-job-btn">
-	<form method="get" action="user.php" class="search-container">
-		<input type="text" name="query" placeholder="Search...">
-		<button class="find-job-btn" type="submit">Search</button>
-	</form>
+<div style="width: 80%; margin: 0 auto;">
+  <form method="GET" action="" class="border p-4 shadow">
+      <div class="container justify-content-center">
+            <div class="btn-group" role="group" aria-label="Category buttons">
+                <button class="btn btn-outline-primary" role="button" type="submit" name="field" value="All">All Jobs</button>
+                <button class="btn btn-outline-primary" role="button" type="submit" name="field" value="Technology">Technology</button>
+                <button class="btn btn-outline-primary" role="button" type="submit" name="field" value="Business And Finance">Business And Finance</button>
+                <button class="btn btn-outline-primary" role="button" type="submit" name="field" value="Arts and Culture">Arts and Culture</button>
+                <button class="btn btn-outline-primary" role="button" type="submit" name="field" value="Healthcare">Healthcare</button>
+                <button class="btn btn-outline-primary" role="button" type="submit" name="field" value="Education">Education</button>
+            </div>
+        </div>
+  </form>
 </div>
-
-<form method="GET" action="">
-	<div class="container" class="category">
-		<button class="button-30" role="button" type="submit" name="field" value="All">All Jobs</button>
-		<button class="button-30" role="button" type="submit" name="field" value="Technology">Technology</button>
-		<button class="button-30" role="button" type="submit" name="field" value="Business And Finance">Business And Finance</button>
-		<button class="button-30" role="button" type="submit" name="field" value="Arts and Culture">Arts and Culture</button>
-		<button class="button-30" role="button" type="submit" name="field" value="Healthcare">Healthcare</button>
-		<button class="button-30" role="button" type="submit" name="field" value="Education">Education</button>
-	</div>
-</form>
-
-<!-- jobs table -->
-<?php
+    <!-- jobs table -->
+    <?php
 
 
 
@@ -90,7 +96,7 @@ if (isset($_GET['query'])) {
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-	echo '<table>';
+    echo '<table class="table table-bordered table-hover table-striped table-dark  shadow" style="width: 80%; margin: 0 auto;">';
 	echo '<thead>
         <tr>
             <th>Job Title</th>
@@ -115,29 +121,28 @@ if ($result->num_rows > 0) {
 	echo '</tbody>';
 	echo '</table>';
 } else {
-	echo '<div class="nojob">
-    <div class="message">No jobs found.</div>
-		</div>';
+	
+    echo '<div class="alert alert-danger text-center font-weight-bold" role="alert" style=" margin: 0 auto;">
+    No Jobs found.
+  </div>';
 }
 // Close the database connection
 $conn->close();
 ?>
-<footer>
-	<div class="container">
-		<div class="left">
-			<p>Company Name</p>
-			<p>123 Main St, City, State ZIP</p>
-		</div>
-		<div class="right">
-			<a href="./signin.php">Register</a>
-
-			<a href="#top">^</a>
-
-		</div>
-	</div>
-</footer>
-
-
+<!-- <footer class="footer mt-auto py-3 bg-dark fixed-bottom">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <p class="text-white">Company Name</p>
+        <p class="text-white">123 Main St, City, State ZIP</p>
+      </div>
+      <div class="col text-right">
+        <a href="./signin.php" class="text-white">Register       </a>
+        <a href="#top" class="text-white">     ^</a>
+      </div>
+    </div>
+  </div>
+</footer> -->
 </body>
 
 </html>
