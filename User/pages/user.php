@@ -1,5 +1,6 @@
 <?php
-include './database.php';
+include '../../Database/database.php';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
