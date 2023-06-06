@@ -5,8 +5,6 @@ if (!isset($_SESSION['email'])) {
     header('Location: signin.php');
     exit();
 }
-// If the user is logged in, display the home page
-header('Location: apply.php');
 ?>
 
 <!DOCTYPE html>
@@ -21,6 +19,7 @@ header('Location: apply.php');
 
 <body>
     <h1>Apply</h1>
+    <p>Welcome to the apply page!</p>
 </body>
 
 </html>
